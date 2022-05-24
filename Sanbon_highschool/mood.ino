@@ -24,7 +24,7 @@ void setup() {
 void loop() {
 
   if (digitalRead(dBTN) == LOW) {
-    cnt++;
+    cnt--;
     delay(500);
   }
   if (digitalRead(iBTN) == LOW) {
@@ -32,8 +32,6 @@ void loop() {
     delay(500);
   }
   get_mode(cnt % mode_num);
-  for (int i = 0; i < 9; i++)
-    dot.setRow(0, i, B11111111);
 }
 
 
@@ -43,14 +41,17 @@ void get_mode(int mode)
     dot.setIntensity(0, 1);
     for (int i = 0; i < 9; i++)
       dot.setRow(0, i, B11111111);
+
   else if (mode == 1)
     dot.setIntensity(0, 7);
     for (int i = 0; i < 9; i++)
       dot.setRow(0, i, B11111111);
+
   else if (mode == 2)
     dot.setIntensity(0, 15);
     for (int i = 0; i < 9; i++)
       dot.setRow(0, i, B11111111);
+      
   else if (mode == 3)
     glitch();
   
